@@ -1,0 +1,398 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panadería El Trigal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #fff8ef;
+            color: #4a3020;
+        }
+
+        /* ENCABEZADO */
+        header {
+            background-color: #633b24;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffc66d;
+        }
+
+        /* INICIO */
+        .hero {
+            min-height: 400px;
+            background: linear-gradient(
+                rgba(0,0,0,0.5),
+                rgba(0,0,0,0.5)
+            ),
+            url("https://images.unsplash.com/photo-1509440159596-0249088772ff")
+            center/cover;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #d88b35;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #a95f1d;
+        }
+
+        /* PRODUCTOS */
+        .products-section {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 25px;
+            color: #633b24;
+        }
+
+        .filters {
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #e8d3bd;
+            cursor: pointer;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: #633b24;
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(220px, 1fr)
+            );
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .product-img {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            margin-bottom: 10px;
+            color: #633b24;
+        }
+
+        .product-card p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .price {
+            color: #c47726;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .product-card.hidden {
+            display: none;
+        }
+
+        /* CONTACTO */
+        .contact-section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f0dfcc;
+        }
+
+        .contact-section p {
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea {
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        /* PIE DE PAGINA */
+        footer {
+            background-color: #633b24;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* DISEÑO PARA CELULARES */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="logo">🥐 El Trigal</div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#productos">Productos</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- INICIO -->
+    <section id="inicio" class="hero">
+        <div>
+            <h1>Artesanos del Pan</h1>
+            <p>Horneado con amor, fresco cada mañana.</p>
+            <a href="#productos" class="btn">Ver Menú</a>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section id="productos" class="products-section">
+
+        <h2>Nuestras Especialidades</h2>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">
+                Todos
+            </button>
+
+            <button class="filter-btn" data-filter="pan">
+                Panes
+            </button>
+
+            <button class="filter-btn" data-filter="reposteria">
+                Repostería
+            </button>
+        </div>
+
+        <div class="products-grid">
+
+            <div class="product-card" data-category="pan">
+                <div class="product-img">🥖</div>
+                <h3>Baguette Tradicional</h3>
+                <p>Crujiente por fuera, tierno por dentro.</p>
+                <span class="price">$1.50</span>
+            </div>
+
+            <div class="product-card" data-category="reposteria">
+                <div class="product-img">🥐</div>
+                <h3>Croissant de Mantequilla</h3>
+                <p>Hojaldre artesanal y dorado.</p>
+                <span class="price">$2.00</span>
+            </div>
+
+            <div class="product-card" data-category="pan">
+                <div class="product-img">🍞</div>
+                <h3>Pan Integral</h3>
+                <p>Preparado con masa madre y fermentación lenta.</p>
+                <span class="price">$4.50</span>
+            </div>
+
+            <div class="product-card" data-category="reposteria">
+                <div class="product-img">🍰</div>
+                <h3>Tarta de Fresas</h3>
+                <p>Con crema pastelera e ingredientes frescos.</p>
+                <span class="price">$12.00</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contact-section">
+
+        <h2>Contacto</h2>
+        <p>¿Tienes un pedido especial? ¡Escríbenos!</p>
+
+        <form id="contact-form">
+
+            <input
+                type="text"
+                placeholder="Tu nombre"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Tu correo electrónico"
+                required
+            >
+
+            <textarea
+                placeholder="¿En qué podemos ayudarte?"
+                rows="4"
+                required
+            ></textarea>
+
+            <button type="submit" class="btn">
+                Enviar Mensaje
+            </button>
+
+        </form>
+    </section>
+
+    <!-- PIE DE PAGINA -->
+    <footer>
+        <p>&copy; 2026 Panadería El Trigal.
+        Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // FILTRO DE PRODUCTOS
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const products = document.querySelectorAll(".product-card");
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const filter = button.dataset.filter;
+
+                filterButtons.forEach(btn =>
+                    btn.classList.remove("active")
+                );
+
+                button.classList.add("active");
+
+                products.forEach(product => {
+
+                    if (
+                        filter === "all" ||
+                        product.dataset.category === filter
+                    ) {
+                        product.classList.remove("hidden");
+                    } else {
+                        product.classList.add("hidden");
+                    }
+
+                });
+
+            });
+
+        });
+
+        // FORMULARIO DE CONTACTO
+        const form = document.getElementById("contact-form");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            alert("¡Gracias por comunicarte con Panadería El Trigal!");
+
+            form.reset();
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
+
